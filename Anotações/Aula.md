@@ -52,7 +52,7 @@ change id ISBN varchar(20);
 - Tipos de cardinalidade
 - 
      ## EX1.
-  ``sql
+  ```sql
       /* Lógico_2: */
       CREATE TABLE Funcionario (
           Cpf CHAR(14) PRIMARY KEY,
@@ -64,7 +64,7 @@ change id ISBN varchar(20);
           Numero INTEGER,
           complemento VARCHAR(100)
       );
-  ``
+  ```
 
 
 
