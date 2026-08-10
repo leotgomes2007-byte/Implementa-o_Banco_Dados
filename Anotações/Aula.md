@@ -50,6 +50,7 @@ change id ISBN varchar(20);
 - Revisão de banco de dados
 - Modelo Entidade-Relacionamento Conceitual
 - Tipos de cardinalidade
+- 
      ## EX1.
   ``sql
       /* Lógico_2: */
@@ -64,6 +65,8 @@ change id ISBN varchar(20);
           complemento VARCHAR(100)
       );
   ``
+
+
 
     <img width="940" height="296" alt="print" src="https://github.com/user-attachments/assets/ff2cb3ea-7efe-45c9-84a7-9ecdfc1594fc" />
 
