@@ -1,6 +1,6 @@
 # Aula 2
-    -Revisão da utlima aula
-    -estudo sobre tipos de dados, restrições - constraints
+- Revisão da utlima aula
+- estudo sobre tipos de dados, restrições - constraints
 	
 ## Exercicio da Aula:  
     
