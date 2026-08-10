@@ -48,9 +48,10 @@ change id ISBN varchar(20);
 # Aula 1
 - Explicação inicial e como funcionará a materia
 - Revisão de banco de dados
-    ->Modelo Entidade-Relacionamento Conceitual
-    ->Tipos de cardinalidade
-      EX1.
+- Modelo Entidade-Relacionamento Conceitual
+- Tipos de cardinalidade
+     ## EX1.
+  ``sql
       /* Lógico_2: */
       CREATE TABLE Funcionario (
           Cpf CHAR(14) PRIMARY KEY,
@@ -62,6 +63,7 @@ change id ISBN varchar(20);
           Numero INTEGER,
           complemento VARCHAR(100)
       );
+  ``
 
     <img width="940" height="296" alt="print" src="https://github.com/user-attachments/assets/ff2cb3ea-7efe-45c9-84a7-9ecdfc1594fc" />
 
@@ -73,4 +75,4 @@ change id ISBN varchar(20);
 
   ## OBS:
   - 1.O banco de de dados é mais usado, pois ajuda a evitar a dupluicidade de dados
-  - 
+  
