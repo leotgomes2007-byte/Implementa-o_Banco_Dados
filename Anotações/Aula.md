@@ -71,6 +71,7 @@ change id ISBN varchar(20);
     <img width="940" height="296" alt="print" src="https://github.com/user-attachments/assets/ff2cb3ea-7efe-45c9-84a7-9ecdfc1594fc" />
 
   EX2.
+  
   <img width="912" height="562" alt="captura 1" src="https://github.com/user-attachments/assets/8de837a5-2a49-412f-8f27-5efb00523124" />
 
   
