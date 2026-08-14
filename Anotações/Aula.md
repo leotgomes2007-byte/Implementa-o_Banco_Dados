@@ -1,6 +1,6 @@
 # Aula 03 - 14/08/2026
 
-## Exercicios da Aula
+## Exercicio da Aula
 ```sql
 -- Distinct
 SELECT DISTINCT F.Salario
