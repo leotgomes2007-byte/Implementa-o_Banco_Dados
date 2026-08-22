@@ -40,64 +40,41 @@ AND Dnr = 5;
 
 SELECT CONCAT(F.Pnome, ' ' ,F.Unome) AS Nome_completo, F.Endereco, D.Dnome AS Departamento
 FROM FUNCIONARIO AS F
-
-INNER JOIN DEPARTAMENTO AS D
-ON F.Dnr = D.Dnumero
-
+INNER JOIN DEPARTAMENTO AS D ON F.Dnr = D.Dnumero
 WHERE F.Dnr = 5;
 
-/////
 
 SELECT CONCAT(F.Pnome, ' ' ,F.Unome) AS Nome_completo, P.Projnome
 FROM FUNCIONARIO AS F
-
-INNER JOIN TRABALHA_EM AS T
-ON T.Fcpf = F.Cpf
-
-INNER JOIN PROJETO AS P
-ON P.Projnumero = T.Pnr
-
+INNER JOIN TRABALHA_EM AS T ON T.Fcpf = F.Cpf
+INNER JOIN PROJETO AS P ON P.Projnumero = T.Pnr
 WHERE P.Projnome = 'ProdutoX';
 
 ////
 
-SELECT 
-	P.Projnumero, 
-	D.Dnumero, 
-	D.Dnome, 
-	D.Cpf_gerente, 
-	F.Unome, 
-	P.Projlocal, 
-	F.Datanasc,
-	F.Endereco
+SELECT P.Projnumero, D.Dnumero, D.Dnome, D.Cpf_gerente, F.Unome, P.Projlocal, F.Datanasc,F.Endereco
 FROM FUNCIONARIO AS F
-
 INNER JOIN TRABALHA_EM AS T
 ON T.Fcpf = F.Cpf
 
 INNER JOIN PROJETO AS P
 ON P.Projnumero = T.Pnr
-
 INNER JOIN DEPARTAMENTO AS D
 ON P.Dnum = D.Dnumero
-
 WHERE P.Projlocal = 'Mauá'
 
 -- LEFT JOIN
 
 SELECT *
 FROM DEPARTAMENTO AS D
-
 LEFT JOIN FUNCIONARIO AS F
 ON D.Dnumero = F.Dnr
-
 WHERE F.Cpf IS NULL; 
 
 -- RIGHT JOIN
 
 SELECT *
 FROM DEPARTAMENTO AS D
-
 RIGHT JOIN FUNCIONARIO AS F
 ON D.Dnumero = F.Dnr
 
@@ -105,30 +82,21 @@ ON D.Dnumero = F.Dnr
 
 SELECT *
 FROM FUNCIONARIO AS F
-
 FULL JOIN DEPARTAMENTO AS D
 ON F.Dnr = D.Dnumero
-
-WHERE
-	D.Dnumero IS NULL
-	OR F.Cpf IS NULL;
+WHERE D.Dnumero IS NULL OR F.Cpf IS NULL;
 
 -- SELF JOIN (quando a tabela se relaciona a ela mesma)
 -- comparar linhas e posições hierarquicas
 
 SELECT t1.Pnome, t2.Cpf_supervisor
 FROM FUNCIONARIO AS t1
-
 JOIN FUNCIONARIO AS t2
 ON t1.Cpf = t2.Cpf
-
-WHERE 
-	t2.Cpf_supervisor IS NOT NULL;
+WHERE t2.Cpf_supervisor IS NOT NULL;
 
 
-SELECT 
-	F.Pnome AS 'Funcionario',
-	S.Unome AS 'Supervisor'
+SELECT F.Pnome AS 'Funcionario',S.Unome AS 'Supervisor'
 FROM FUNCIONARIO AS F
 
 JOIN FUNCIONARIO AS S
@@ -138,14 +106,9 @@ ORDER BY S.Unome;
 
 -- UNION/INTERSECT/EXCEPT
 
-SELECT 
-	F.Pnome AS 'Nome', 
-	F.Sexo AS 'Sexo', 
-	F.Datanasc AS 'Data'
+SELECT F.Pnome AS 'Nome', F.Sexo AS 'Sexo', F.Datanasc AS 'Data'
 FROM FUNCIONARIO AS F
-
 UNION
-
 SELECT 
 	D.Nome_dependente AS 'Nome',
 	D.Sexo AS 'Sexo',
