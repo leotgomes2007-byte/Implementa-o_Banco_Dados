@@ -1,3 +1,181 @@
+# Aula 05 - 28/08/2026
+- Comandos estudados em aula
+  
+```sql
+use EMPRESA;
+
+-- UNION
+SELECT P.Projlocal AS 'Local'
+FROM PROJETO AS P
+
+UNION
+
+SELECT L.Dlocal AS 'Local'
+FROM LOCALIZACAO_DEP AS L;
+
+-- EXCEPT
+SELECT F.Cpf, F.Pnome
+FROM FUNCIONARIO AS F
+
+EXCEPT
+
+SELECT D.Cpf_gerente, F.Pnome
+FROM DEPARTAMENTO AS D
+
+JOIN FUNCIONARIO AS F
+ON D.Cpf_gerente = F.Cpf
+
+-- INTERSECT
+SELECT Cpf
+FROM FUNCIONARIO
+
+INTERSECT
+
+SELECT Cpf_supervisor
+FROM FUNCIONARIO
+
+-- GROUP BY
+SELECT COUNT(F.Cpf) AS 'Qtd_Cpf', F.Sexo
+FROM FUNCIONARIO AS F
+GROUP BY F.Sexo;
+
+-- ///
+SELECT COUNT(F.Cpf) AS 'Qtd_Cpf', D.Dnome
+FROM FUNCIONARIO AS F
+
+JOIN DEPARTAMENTO AS D
+ON F.Dnr = D.Dnumero
+
+GROUP BY D.Dnome;
+
+-- ///
+SELECT SUM(F.Salario) AS 'Soma Salario', D.Dnome
+FROM FUNCIONARIO AS F
+
+JOIN DEPARTAMENTO AS D
+ON F.Dnr = D.Dnumero
+
+GROUP BY D.Dnome;
+
+-- ///
+SELECT AVG(T.Horas) AS 'M Hrs', P.Projnome
+FROM TRABALHA_EM AS T
+
+JOIN PROJETO AS P
+ON T.Pnr = P.Projnumero
+
+GROUP BY P.Projnome
+
+-- ///
+SELECT MAX(F.Salario) AS 'Salario', D.Dnome
+FROM FUNCIONARIO AS F
+
+JOIN DEPARTAMENTO AS D
+ON F.Dnr = D.Dnumero
+
+GROUP BY D.Dnome
+
+-- HAVING
+SELECT COUNT(F.Cpf) AS 'Func', D.Dnome
+FROM FUNCIONARIO AS F
+
+JOIN DEPARTAMENTO AS D
+ON F.Dnr = D.Dnumero
+
+GROUP BY D.Dnome
+HAVING COUNT(F.Cpf) > 3;
+
+-- ///
+SELECT SUM(T.Horas) AS 'Min Hrs', P.Projnome
+FROM TRABALHA_EM AS T
+
+JOIN PROJETO AS P
+ON T.Pnr = P.Projnumero
+
+GROUP BY P.Projnome
+HAVING SUM(T.Horas) >= 50;
+
+-- EXISTS
+SELECT *
+FROM DEPARTAMENTO AS D
+WHERE EXISTS (
+	SELECT 1
+	FROM PROJETO, DEPARTAMENTO
+	WHERE PROJETO.Dnum = DEPARTAMENTO.Dnumero
+);
+
+-- ANY
+SELECT F.Salario
+FROM FUNCIONARIO AS F
+
+JOIN DEPARTAMENTO AS D
+ON F.Dnr = D.Dnumero
+
+WHERE D.Dnome = 'Administração';
+
+--///
+SELECT Pnome, Salario
+FROM FUNCIONARIO
+WHERE Salario <> ANY (
+	SELECT F.Salario
+	FROM FUNCIONARIO AS F
+	JOIN DEPARTAMENTO AS D
+	ON F.Dnr = D.DnumerO
+	WHERE D.Dnome = 'Administração'
+)
+```
+- Comandos estudados(Parecido com programação)
+```sql
+--DECLARE
+DECLARE --@nome VARCHAR(100),
+		@idade INT,
+		--@salario DECIMAL(10,2),
+		@data DATE;
+SET @nome = 'Herysson R. Figueiredo';
+SET @idade = 38;
+SET @salario = 2400.00;
+SET @data = GETDATE();
+PRINT 'OLÁ PUTÃO, TEU NOME É: ' + @nome 
+	+ ', Idade: ' + CAST(@idade AS VARCHAR(10));
+SELECT
+	@nome AS 'Nome',
+	@idade AS 'Idade',
+	@salario AS 'Grana',
+	@data AS 'Data de hoje';
+
+-- ///
+DECLARE @nomeDpt VARCHAR(20);
+
+SELECT @nomeDpt = Dnome
+FROM DEPARTAMENTO AS D
+WHERE D.Dnumero = 4
+
+PRINT 'Departamento' + @nomeDpt;
+
+--- /// 
+DECLARE @salario DECIMAL(10,2),
+		@novo_salario DECIMAL(10,2),
+		@nome VARCHAR(100);
+SET @nome = 'Jennifer';
+SELECT @salario = F.Salario
+FROM FUNCIONARIO AS F
+WHERE F.Pnome = @nome;
+SET @novo_salario = @salario * 1.1;
+PRINT 'Salario: ' + CAST(@salario AS VARCHAR(10))
+PRINT 'Novo Salario: ' + CAST(@novo_salario AS VARCHAR(10))
+
+-- ///
+DECLARE @dataJennifer DATE
+
+SELECT @dataJennifer = Datanasc
+FROM FUNCIONARIO
+WHERE Pnome = 'Jennifer'
+
+PRINT DATEDIFF(YEAR, @dataJennifer, GETDATE());****
+ ```
+
+
+
 # Aula 04 - 21/08/2026
 ````sql
 -- IN
